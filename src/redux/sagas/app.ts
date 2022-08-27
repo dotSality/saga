@@ -1,18 +1,24 @@
-import { takeEvery, takeLatest, takeLeading, select } from 'redux-saga/effects';
-import { getCount } from '../selectors/app-selector';
+import { takeEvery, put, call, takeLatest, takeLeading, select, fork } from 'redux-saga/effects';
+import { getLatestNewsApi, getPopularNewsApi } from '../../api/app-api';
+import { setLatestNews, setPopularNews } from '../slices/app-slice';
 
-const delay = (time: number) => new Promise((res) => {
-  setTimeout(res, time * 1000);
-});
+export function* handlePopularNews() {
+  const { hits } = yield call(getPopularNewsApi);
+  yield put(setPopularNews(hits));
+}
 
-export function* workerSaga() {
-  // const count: number = yield select(getCount);
-  yield delay(2);
-  console.log('inc');
+export function* handleLatestNews() {
+  const { hits } = yield call(getLatestNewsApi);
+  yield put(setLatestNews(hits));
+}
+
+export function* handleNews() {
+  yield fork(handlePopularNews);
+  yield fork(handleLatestNews);
 }
 
 export function* watchLog() {
-  yield takeLeading('app/increment', workerSaga);
+  yield takeEvery('app/getNews', handleNews);
 }
 
 export function* log() {

@@ -1,20 +1,23 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 const appSlice = createSlice({
   name: 'app',
   initialState: {
-    count: 0,
+    latestNews: [] as any[],
+    popularNews: [] as any[],
   },
   reducers: {
-    increment: (state) => {
-      state.count += 1;
+    setLatestNews: (state, action: PayloadAction<Array<any>>) => {
+      state.latestNews = [...state.latestNews, ...action.payload];
     },
-    decrement: (state) => {
-      state.count -= 1;
+    setPopularNews: (state, action: PayloadAction<Array<any>>) => {
+      state.popularNews = [...state.popularNews, ...action.payload];
+    },
+    getNews: () => {
     },
   },
 });
 
 export const appReducer = appSlice.reducer;
 
-export const { increment, decrement } = appSlice.actions;
+export const { getNews, setLatestNews, setPopularNews } = appSlice.actions;

@@ -2,14 +2,14 @@
   width: 100%;
   min-height: 100vh;
   display: flex;
+  grid-gap: 20px;
   justify-content: center;
   align-items: center;
 }
 
 .app-container {
   padding: 20px;
-  width: 300px;
-  height: 200px;
+  width: 400px;
   display: flex;
   flex-direction: column;
   grid-gap: 50px;
@@ -47,4 +47,10 @@
       color: #234feb;
     }
   }
+}
+
+.app-container_news {
+  display: flex;
+  flex-direction: column;
+  grid-gap: 15px;
 }
