@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './app.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCount } from './redux/selectors/app-selector';
