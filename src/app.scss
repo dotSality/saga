@@ -1,0 +1,50 @@
+.app {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.app-container {
+  padding: 20px;
+  width: 300px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  grid-gap: 50px;
+  border-radius: 5px;
+  box-shadow: 0 0 40px rgba(1, 5, 21, 0.25);
+
+  &_result {
+    text-align: center;
+    font-size: 36px;
+    line-height: 140%;
+    font-weight: 500;
+  }
+}
+
+.app-container-buttons {
+  display: flex;
+  justify-content: center;
+  grid-gap: 30px;
+
+  &_button {
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: unset;
+    color: white;
+    background-color: #234feb;
+    transition: background-color .1s ease-in;
+
+    &:hover {
+      background-color: #0A39DC;
+    }
+
+    &:active {
+      background-color: rgba(#234feb, 0.1);
+      color: #234feb;
+    }
+  }
+}
